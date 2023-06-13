@@ -2,8 +2,17 @@ import { Form, Button, Input } from "antd-mobile";
 import { useState } from "react";
 
 import "./login.css";
+import { createUser } from "../../api/user";
 
 export default function Login() {
+  const [form] = Form.useForm<{ Email: string; VerificationCode: string }>();
+  const onSubmit = () => {
+    const values = form.getFieldsValue();
+    createUser(values).catch((err) => {
+      console.error(err);
+    });
+  };
+
   const validateMessages = {
     // eslint-disable-next-line no-template-curly-in-string
     required: "${name} is required ",
@@ -11,6 +20,11 @@ export default function Login() {
 
   const [countdown, setCountdown] = useState(0);
   const handleSendCode = () => {
+    const values = form.getFieldsValue();
+    values.VerificationCode = "";
+    createUser(values).catch((err) => {
+      console.error(err);
+    });
     if (countdown === 0) {
       setCountdown(60);
       const timer = setInterval(() => {
@@ -24,11 +38,12 @@ export default function Login() {
 
   return (
     <Form
+      form={form}
       validateMessages={validateMessages}
       layout="horizontal"
       style={{ "--prefix-width": "3em" }}
       footer={
-        <Button block type="submit" color="primary">
+        <Button onClick={onSubmit} block type="submit" color="primary">
           Login
         </Button>
       }
@@ -37,7 +52,7 @@ export default function Login() {
         <Input placeholder="Input your email adress" />
       </Form.Item>
       <Form.Item
-        name="Code"
+        name="VerificationCode"
         label="Code"
         rules={[{ required: true }]}
         extra={
