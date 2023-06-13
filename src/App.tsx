@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { Button } from "antd-mobile";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         >
           Learn React
         </a>
+        <Button block color="primary" size="large">
+          Block Button
+        </Button>
       </header>
     </div>
   );
