@@ -1,5 +1,6 @@
 // api/user.ts
-import axios from "axios";
+
+import axios from "./axios";
 
 interface CreateUser {
   id: number;
