@@ -23,13 +23,15 @@ instance.interceptors.response.use(
         icon: "fail",
         content: response.data.message,
       });
-      throw new Error(response.data.message);
     }
     return response;
   },
   (error) => {
-    console.log(error);
-    throw error;
+    Toast.clear();
+    Toast.show({
+      icon: "fail",
+      content: "Unknown error occured" + error,
+    });
   }
 );
 

@@ -8,9 +8,7 @@ export default function Login() {
   const [form] = Form.useForm<{ Email: string; VerificationCode: string }>();
   const onFinish = () => {
     const values = form.getFieldsValue();
-    createUser(values).catch((err) => {
-      console.error(err);
-    });
+    createUser(values);
   };
 
   // 1. Validate the Email field
@@ -35,7 +33,7 @@ export default function Login() {
         }, 1000);
       }
     } catch (errors) {
-      console.log(errors);
+      console.error("handleSendCode", errors);
     }
   };
 
