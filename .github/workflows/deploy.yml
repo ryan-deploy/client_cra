@@ -8,7 +8,7 @@ jobs:
   deploy_cra: # job 的 id ，可以在 runner 中识别跑的是哪个 job
     runs-on: self-hosted
     environment: # 在 github 仓库记录每个环境的标志已经对应环境的 url ，方便直接点击访问
-      name: cra
+      name: production
       url: http://cra.tangzhenming.com
     steps:
       - uses: actions/checkout@v3
