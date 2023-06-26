@@ -56,11 +56,11 @@ export default function Login() {
           {
             required: true,
             whitespace: false,
-            message: "Input your email adress",
+            message: "Input your email address",
           },
         ]}
       >
-        <Input placeholder="Input your email adress" />
+        <Input placeholder="Input your email address" />
       </Form.Item>
       <Form.Item
         name="VerificationCode"
