@@ -10,5 +10,4 @@ services:
 
 networks:
   default:
-    external:
-      name: my_traefik_default
+    name: traefik_default
