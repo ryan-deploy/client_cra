@@ -26,6 +26,11 @@ instance.interceptors.response.use(
         icon: "fail",
         content: response.data.message,
       });
+    } else {
+      Toast.show({
+        icon: "success",
+        content: response.data.message,
+      });
     }
     return response;
   },
