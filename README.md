@@ -13,3 +13,4 @@
 - **2023.06.27**
   - Use [React Router](https://reactrouter.com/en/main)
     - Don't forget using `npm install @types/react-router-dom` for TypeScript
+    - Navigate to login page when someone unauthenticated; send them to the page they tried to visit if they login successfuly. [Check this commit out](https://github.com/ryan-deploy/client_cra/commit/aa5d13fb707ffb9d245bafa7f3852a86aecd18e2)
