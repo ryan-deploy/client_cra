@@ -20,6 +20,10 @@ instance.interceptors.request.use((request) => {
 
 instance.interceptors.response.use(
   (response) => {
+    if (response.status === 401) {
+      sessionStorage.setItem("token", "");
+    }
+
     Toast.clear();
     if (!response.data.code) {
       Toast.show({
