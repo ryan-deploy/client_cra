@@ -36,7 +36,7 @@ instance.interceptors.response.use(
         content: response.data.message,
       });
     }
-    return response.data;
+    return response;
   },
   (error) => {
     Toast.clear();
