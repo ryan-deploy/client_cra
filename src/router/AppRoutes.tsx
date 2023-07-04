@@ -6,28 +6,56 @@ import RequireAuth from "./RequireAuth";
 import LayoutTabBar from "../components/Layouts/LayoutTabBar";
 import { AppOutline } from "antd-mobile-icons";
 
+const routes = [
+  {
+    path: "/",
+    element: <Home />,
+    title: <AppOutline fontSize={30} />,
+    requireAuth: false,
+    layout: true,
+  },
+  {
+    path: "/user",
+    element: <User />,
+    title: "User",
+    requireAuth: true,
+    layout: true,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    title: "Login",
+    requireAuth: false,
+    layout: false,
+  },
+];
+
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <LayoutTabBar title={<AppOutline fontSize={30} />}>
-            <Home />
-          </LayoutTabBar>
-        }
-      />
-      <Route
-        path="/user"
-        element={
-          <RequireAuth>
-            <LayoutTabBar title="User">
-              <User />
-            </LayoutTabBar>
-          </RequireAuth>
-        }
-      />
-      <Route path="/login" element={<Login />} />
+      {routes.map((route) => (
+        <Route
+          key={route.path}
+          path={route.path}
+          element={
+            route.requireAuth ? (
+              <RequireAuth>
+                {route.layout ? (
+                  <LayoutTabBar title={route.title}>
+                    {route.element}
+                  </LayoutTabBar>
+                ) : (
+                  route.element
+                )}
+              </RequireAuth>
+            ) : route.layout ? (
+              <LayoutTabBar title={route.title}>{route.element}</LayoutTabBar>
+            ) : (
+              route.element
+            )
+          }
+        />
+      ))}
     </Routes>
   );
 };
