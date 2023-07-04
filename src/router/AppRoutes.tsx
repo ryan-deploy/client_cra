@@ -11,7 +11,7 @@ interface IRoute {
   component: React.ReactNode;
   title: React.ReactNode;
   requireAuth: boolean;
-  layout: boolean;
+  isTabBar: boolean;
 }
 
 const routes: IRoute[] = [
@@ -20,21 +20,21 @@ const routes: IRoute[] = [
     component: <Home />,
     title: <AppOutline fontSize={30} />,
     requireAuth: false,
-    layout: true,
+    isTabBar: true,
   },
   {
     path: "/user",
     component: <User />,
     title: "User",
     requireAuth: true,
-    layout: true,
+    isTabBar: true,
   },
   {
     path: "/login",
     component: <Login />,
     title: "Login",
     requireAuth: false,
-    layout: false,
+    isTabBar: false,
   },
 ];
 
@@ -42,10 +42,10 @@ const generateElement = ({
   component,
   title,
   requireAuth,
-  layout,
+  isTabBar,
 }: IRoute): React.ReactNode | null => {
   let element = component;
-  if (layout) {
+  if (isTabBar) {
     element = <LayoutTabBar title={title}>{element}</LayoutTabBar>;
   }
   if (requireAuth) {
