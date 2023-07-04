@@ -1,9 +1,12 @@
-import RTTabBar from "./components/RTTabBar/RTTabBar";
+import AppTabBar from "./components/AppTabBar/AppTabBar";
+import AppRoutes from "./router/AppRoutes";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <RTTabBar></RTTabBar>
+      <AppRoutes></AppRoutes>
+      <AppTabBar></AppTabBar>
     </div>
   );
 }

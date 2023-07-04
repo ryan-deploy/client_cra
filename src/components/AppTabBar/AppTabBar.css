@@ -1,5 +1,6 @@
-.rt-tab-bar {
+.app-tab-bar {
   position: fixed;
   width: 100%;
   bottom: 0;
+  background-color: #fff;
 }
