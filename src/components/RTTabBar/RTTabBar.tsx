@@ -5,7 +5,7 @@ import Home from "../../pages/home/home";
 import "./RTTabBar.css";
 import User from "../../pages/user/user";
 import Login from "../../pages/login/login";
-import RequireAuth from "../RequireAuth";
+import RequireAuth from "../../router/RequireAuth";
 
 function RTTabBar() {
   const navigate = useNavigate();

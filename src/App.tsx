@@ -1,4 +1,4 @@
-import RTTabBar from "./router/RTTabBar/RTTabBar";
+import RTTabBar from "./components/RTTabBar/RTTabBar";
 
 function App() {
   return (
