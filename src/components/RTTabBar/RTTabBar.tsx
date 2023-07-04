@@ -47,6 +47,7 @@ function RTTabBar() {
         className="rt-tab-bar"
         activeKey={pathname}
         onChange={(value) => setRouteActive(value)}
+        safeArea
       >
         {tabs.map((item) => (
           <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
