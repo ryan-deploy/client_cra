@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 
-export default function RequireAuth({ children }: { children: JSX.Element }) {
+const RequireAuth = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = sessionStorage.getItem("token");
   let location = useLocation();
   if (!isAuthenticated) {
@@ -10,5 +10,7 @@ export default function RequireAuth({ children }: { children: JSX.Element }) {
     // than dropping them off on the home page.
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  return children;
-}
+  return <>{children}</>;
+};
+
+export default RequireAuth;
