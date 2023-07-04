@@ -3,7 +3,7 @@ import Home from "../pages/home/home";
 import Login from "../pages/login/login";
 import User from "../pages/user/user";
 import RequireAuth from "./RequireAuth";
-import LayoutTabBar from "../components/Layouts/LayoutTabBar/LayoutTabBar";
+import LayoutTabBar from "../components/Layouts/LayoutTabBar";
 import { AppOutline } from "antd-mobile-icons";
 
 const AppRoutes = () => {

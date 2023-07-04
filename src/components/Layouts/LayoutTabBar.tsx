@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import AppNavBar from "../../AppNavBar/AppNavBar";
+import AppNavBar from "../AppNavBar/AppNavBar";
 
 interface LayoutTabBarProps {
   children: ReactNode;
