@@ -31,10 +31,11 @@ instance.interceptors.response.use(
         content: response.data.message,
       });
     } else {
-      Toast.show({
-        icon: "success",
-        content: response.data.message,
-      });
+      response.data.message &&
+        Toast.show({
+          icon: "success",
+          content: response.data.message,
+        });
     }
     return response;
   },
