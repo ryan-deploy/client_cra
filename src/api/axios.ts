@@ -15,15 +15,12 @@ instance.interceptors.request.use((request) => {
     content: "Loading",
     duration: 0,
   });
+
   return request;
 });
 
 instance.interceptors.response.use(
   (response) => {
-    if (response.status === 401) {
-      sessionStorage.setItem("token", "");
-    }
-
     Toast.clear();
     if (!response.data.code) {
       Toast.show({
@@ -40,6 +37,10 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
+    if (error.response.status === 401) {
+      sessionStorage.setItem("user", "{}");
+    }
+
     Toast.clear();
     Toast.show({
       icon: "fail",

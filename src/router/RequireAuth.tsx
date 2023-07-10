@@ -1,7 +1,8 @@
 import { Navigate, useLocation } from "react-router-dom";
 
 const RequireAuth = ({ children }: { children: React.ReactNode }) => {
-  const isAuthenticated = sessionStorage.getItem("token");
+  const user = sessionStorage.getItem("user");
+  const isAuthenticated = JSON.parse(user ? user : "{}")?.Token;
   let location = useLocation();
   if (!isAuthenticated) {
     // Redirect them to the /login page, but save the current location they were

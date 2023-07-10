@@ -2,7 +2,7 @@
 
 import { Form, Button, Input } from "antd-mobile";
 import { useState } from "react";
-import { createUser } from "../../api/user";
+import { CreateUser } from "../../api/user";
 
 import "./login.css";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -13,9 +13,12 @@ export default function Login() {
   const [form] = Form.useForm<{ Email: string; VerificationCode: string }>();
   const onFinish = () => {
     const values = form.getFieldsValue();
-    createUser(values).then((res) => {
+    CreateUser(values).then((res) => {
       if (res.code) {
-        sessionStorage.setItem("token", res.data?.Token ? res.data.Token : "");
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify(res.data ? res.data : {})
+        );
         // Send them back to the page they tried to visit when they were
         // redirected to the login page. Use { replace: true } so we don't create
         // another entry in the history stack for the login page.  This means that
@@ -38,7 +41,7 @@ export default function Login() {
 
       const values = form.getFieldsValue();
       values.VerificationCode = "";
-      await createUser(values);
+      await CreateUser(values);
 
       if (countdown === 0) {
         setCountdown(60);
